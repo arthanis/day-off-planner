@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dates.index');
+});
+
+Route::get('/add', function () {
+    return view('dates.add');
 });
