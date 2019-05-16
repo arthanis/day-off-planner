@@ -17,7 +17,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Day Off Planner</a>
+    <a href="/" class="navbar-brand">Day Off Planner</a>
 
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
