@@ -31,11 +31,11 @@ class DateController extends Controller
      */
     public function store(Request $request)
     {
-        $validateDate = $request->validate([
+        $request->validate([
             'date' => 'required|date_format:Y-m-d'
         ]);
 
-        Date::create(request(['date']));
+        Date::create(request(['date', 'description']));
 
         return redirect('/');
     }
