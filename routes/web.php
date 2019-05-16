@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dates.index');
-});
-
-Route::get('/add', function () {
-    return view('dates.add');
-});
+Route::get('/', 'DateController@index');
+Route::get('/add', 'DateController@create');
+Route::post('/', 'DateController@store');

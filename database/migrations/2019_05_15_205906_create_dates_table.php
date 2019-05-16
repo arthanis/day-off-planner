@@ -15,8 +15,8 @@ class CreateDatesTable extends Migration
     {
         Schema::create('dates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('date')->unique();
-            $table->longText('description');
+            $table->string('date')->unique();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

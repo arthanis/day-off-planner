@@ -11,6 +11,6 @@ class Date extends Model
      * @var array
      */
     protected $fillable = [
-        'date'
+        'date', 'description'
     ];
 }
