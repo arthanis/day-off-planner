@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Date;
 
@@ -13,8 +14,14 @@ class DateController extends Controller
     public function index()
     {
         $dates = Date::all();
+        $currentYearFirstDay = Carbon::now()->year . '-01-01';
+        $currentYearLastDay = Carbon::now()->year . '-12-31';
 
-        return view('dates.index', compact('dates'));
+        $filteredDates = $dates->filter(function ($value, $key) use ($currentYearFirstDay, $currentYearLastDay) {
+            return $value->date > $currentYearFirstDay && $value->date < $currentYearLastDay;
+        })->sortBy('date');
+
+        return view('dates.index', ['dates' => $filteredDates]);
     }
 
     /**
@@ -32,7 +39,7 @@ class DateController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date' => 'required|date_format:Y-m-d'
+            'date' => 'required|unique:dates|date_format:Y-m-d'
         ]);
 
         Date::create(request(['date', 'description']));

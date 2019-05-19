@@ -2,12 +2,14 @@
 @section('title', 'Home - all day offs (current year)')
 
 @section('content')
-
     <div class="d-flex">
         <a href="/add" class="btn btn-primary btn-lg ml-auto">Add a date</a>
     </div>
-
     <div class="container px-0 py-5">
+        @if(count($dates))
+            <div class="alert alert-info">You have <strong>{{ count($dates) }}</strong> day off(s) in this year.</div>
+        @endif
+
         <div class="list-group">
             @foreach ($dates as $date)
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -19,6 +21,6 @@
                     @endif
                 </a>
             @endforeach
+        </div>
     </div>
-
 @endsection
