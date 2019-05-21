@@ -21,7 +21,10 @@ class DateController extends Controller
             return $value->date >= $currentYearFirstDay && $value->date <= $currentYearLastDay;
         })->sortBy('date');
 
-        return view('dates.index', ['dates' => $filteredDates]);
+        return view('dates.index', [
+            'dates' => $filteredDates,
+            'currentYear' => Carbon::now()->year
+        ]);
     }
 
     /**

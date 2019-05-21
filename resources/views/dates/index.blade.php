@@ -1,5 +1,5 @@
 @extends('app')
-@section('title', 'Home - all day offs (current year)')
+@section('title', 'Home - all day offs in ' . $currentYear)
 
 @section('content')
     <div class="d-flex">
@@ -7,7 +7,9 @@
     </div>
     <div class="container px-0 py-5">
         @if(count($dates))
-            <div class="alert alert-info">You have <strong>{{ count($dates) }}</strong> day off(s) in this year.</div>
+            <div class="alert alert-info">
+                You have <strong>{{ count($dates) }}</strong> day off(s) in {{ $currentYear }}.
+            </div>
         @endif
 
         <div class="list-group">
