@@ -18,7 +18,7 @@ class DateController extends Controller
         $currentYearLastDay = Carbon::now()->year . '-12-31';
 
         $filteredDates = $dates->filter(function ($value, $key) use ($currentYearFirstDay, $currentYearLastDay) {
-            return $value->date > $currentYearFirstDay && $value->date < $currentYearLastDay;
+            return $value->date >= $currentYearFirstDay && $value->date <= $currentYearLastDay;
         })->sortBy('date');
 
         return view('dates.index', ['dates' => $filteredDates]);
